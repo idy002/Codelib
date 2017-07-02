@@ -1,0 +1,182 @@
+\documentclass[a4paper,openany]{book}
+%\usepackage{ctex}
+\usepackage{bm}
+\usepackage{longtable}
+%\usepackage[fleqn]{amsmath}
+\usepackage{harpoon}
+ \usepackage{fontspec}
+\usepackage{listings}
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{cmap}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{xeCJK}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{indentfirst}
+
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage[cache=false]{minted}
+\usepackage{pdfpages}
+\allowdisplaybreaks
+
+%\setlength{\parindent}{0em}
+%\setlength{\mathindent}{0pt}
+
+\newfontfamily\Courier{Courier 10 Pitch}
+\renewcommand{\theFancyVerbLine}{\rmfamily\scriptsize\arabic{FancyVerbLine}}
+\newcommand{\cppcode}[1]{
+    \inputminted[mathescape,
+    			 tabsize=2,
+    			 linenos,
+    			 %frame=single,
+    			 framesep=2mm,
+    			 breakaftergroup=true,
+    			 breakautoindent=true,
+    			 breakbytoken=true,
+    			 breaklines=true,
+    			 fontsize=\small
+    ]{cpp}{source/#1}
+}
+\newcommand{\javacode}[1]{
+    \inputminted[mathescape,
+    			 tabsize=2,
+    			 linenos,
+    			 %frame=single,
+    			 framesep=2mm,
+    			 breakaftergroup=true,
+    			 breakautoindent=true,
+    			 breakbytoken=true,
+    			 breaklines=true,
+    			 fontsize=\small
+    ]{java}{source/#1}
+}
+\newcommand{\vimcode}[1]{
+    \inputminted[mathescape,
+    			 tabsize=2,
+    			 linenos,
+    			 %frame=single,
+    			 framesep=2mm,
+    			 breakaftergroup=true,
+    			 breakautoindent=true,
+    			 breakbytoken=true,
+    			 breaklines=true,
+    			 fontsize=\small
+    ]{vim}{source/#1}
+}
+\begin{document}	
+	\title{\textbf{\LARGE{Standard Code Library}}}
+	\author{Shanghai Jiao Tong University}
+	\date{\today}
+	\maketitle
+	\tableofcontents
+	\begin{spacing}{0.9}
+
+	\chapter{图论}
+		\section{强连通分量}
+		\section{双连通分量}
+		\section{Dinic网络流}
+		\section{费用流}
+		\section{kth短路}
+		\section{Two-SAT}
+		\section{KM最大权匹配}
+	\chapter{数论}
+	\chapter{组合}
+	\chapter{字符串}
+	\chapter{计算几何}
+	\chapter{数据结构}
+	\chapter{其他}
+		\section{Java Hints}
+		\javacode{Hint/Java-Hints.java}
+		\section{vimrc}
+		\vimcode{Hint/vimrc}
+		\section{常用结论}
+			\subsection{上下界网络流}
+			$B(u,v)$表示边$(u,v)$流量的下界，$C(u,v)$表示边$(u,v)$流量的上界，$F(u,v)$表示边$(u,v)$的流量。
+			设$G(u,v) = F(u,v) - B(u,v)$，显然有
+			$$0 \leq G(u,v) \leq C(u,v)-B(u,v)$$
+			\subsubsection*{无源汇的上下界可行流}
+			建立超级源点$S^*$和超级汇点$T^*$，对于原图每条边$(u,v)$在新网络中连如下三条边：$S^* \rightarrow v$，容量为$B(u,v)$；$u \rightarrow T^*$，容量为$B(u,v)$；$u \rightarrow v$，容量为$C(u,v) - B(u,v)$。最后求新网络的最大流，判断从超级源点$S^*$出发的边是否都满流即可，边$(u,v)$的最终解中的实际流量为$G(u,v)+B(u,v)$。
+			\subsubsection*{有源汇的上下界可行流}
+			从汇点$T$到源点$S$连一条上界为$\infty$，下界为$0$的边。按照\textbf{无源汇的上下界可行流}一样做即可，流量即为$T \rightarrow S$边上的流量。
+			\subsubsection*{有源汇的上下界最大流}
+			\begin{enumerate}
+				\item 在\textbf{有源汇的上下界可行流}中，从汇点$T$到源点$S$的边改为连一条上界为$\infty$，下届为$x$的边。$x$满足二分性质，找到最大的$x$使得新网络存在\textbf{无源汇的上下界可行流}即为原图的最大流。
+				\item 从汇点$T$到源点$S$连一条上界为$\infty$，下界为$0$的边，变成无源汇的网络。按照\textbf{无源汇的上下界可行流}的方法，建立超级源点$S^*$和超级汇点$T^*$，求一遍$S^* \rightarrow T^*$的最大流，再将从汇点$T$到源点$S$的这条边拆掉，求一次$S \rightarrow T$的最大流即可。
+			\end{enumerate}
+			\subsubsection*{有源汇的上下界最小流}
+			\begin{enumerate}
+				\item 在\textbf{有源汇的上下界可行流}中，从汇点$T$到源点$S$的边改为连一条上界为$x$，下界为$0$的边。$x$满足二分性质，找到最小的$x$使得新网络存在\textbf{无源汇的上下界可行流}即为原图的最小流。
+				\item 按照\textbf{无源汇的上下界可行流}的方法，建立超级源点$S^*$与超级汇点$T^*$，求一遍$S^* \rightarrow T^*$的最大流，但是注意这一次不加上汇点$T$到源点$S$的这条边，即不使之改为无源汇的网络去求解。求完后，再加上那条汇点$T$到源点$S$上界$\infty$的边。因为这条边下界为$0$，所以$S^*$，$T^*$无影响，再直接求一次$S^* \rightarrow T^*$的最大流。若超级源点$S^*$出发的边全部满流，则$T \rightarrow S$边上的流量即为原图的最小流，否则无解。
+			\end{enumerate}
+			\subsection*{上下界费用流}
+			\noindent \textbf{来源：BZOJ 3876}
+			\noindent 设汇$t$，源$s$，超级源$S$，超级汇$T$，本质是每条边的下界为1，上界为MAX，跑一遍有源汇的上下界最小费用最小流。（因为上界无穷大，所以只要满足所有下界的最小费用最小流）
+			\begin{enumerate}
+				\item 对每个点$x$：从$x$到$t$连一条费用为0，流量为MAX的边，表示可以任意停止当前的剧情（接下来的剧情从更优的路径去走，画个样例就知道了）
+				\item 对于每一条边权为z的边x->y：
+				\begin{itemize}
+					\item 从S到y连一条流量为1，费用为z的边，代表这条边至少要被走一次。
+					\item 从x到y连一条流量为MAX，费用为z的边，代表这条边除了至少走的一次之外还可以随便走。
+					\item 从x到T连一条流量为1，费用为0的边。（注意是每一条x->y的边都连，或者你可以记下x的出边数Kx，连一次流量为Kx，费用为0的边）。
+				\end{itemize}
+			\end{enumerate}
+			建完图后从S到T跑一遍费用流，即可。（当前跑出来的就是满足上下界的最小费用最小流了）
+			\subsection{弦图相关}
+			\begin{enumerate}
+				\item[1.] 团数 $\leq$ 色数 , 弦图团数 = 色数
+				\item[2.] 设 $next(v)$ 表示 $N(v)$ 中最前的点 . 
+				令 w* 表示所有满足 $A \in B$ 的 w 中最后的一个点 , 
+				判断 $v \cup N(v)$ 是否为极大团 , 
+				只需判断是否存在一个 w, 
+				满足 $Next(w)=v$ 且 $|N(v)| + 1 \leq |N(w)|$ 即可 . 
+				\item[3.] 最小染色 : 完美消除序列从后往前依次给每个点染色 , 
+				给每个点染上可以染的最小的颜色
+				\item[4.] 最大独立集 : 完美消除序列从前往后能选就选
+				\item[5.] 弦图最大独立集数 $=$ 最小团覆盖数 , 
+				最小团覆盖 : 
+				设最大独立集为 $\{p_1,p_2, \dots ,p_t\}$, 
+				则 $\{p_1\cup N(p_1), \dots , p_t \cup N(p_t)\}$ 
+				为最小团覆盖
+			\end{enumerate}
+			\subsection{Bernoulli数}
+				\input{source/Hint/Bernoulli-Number.tex}
+		\section{常见错误}
+		\begin{spacing}{0.6}
+		\begin{enumerate}
+			\item 数组或者变量类型开错，例如将double开成int；
+			\item 函数忘记返回返回值；
+			\item 初始化数组没有初始化完全；
+			\item 对空间限制判断不足导致MLE；
+		\end{enumerate}
+		\end{spacing}
+		\section{测试列表}
+		\begin{spacing}{0.6}
+		\begin{enumerate}
+			\item 检测评测机是否开O2；
+			\item 检测\_\_int128以及\_\_float128是否能够使用；
+			\item 检测是否能够使用C++11；
+			\item 检测是否能够使用Ext Lib；
+			\item 检测程序运行所能使用的内存大小；
+			\item 检测程序运行所能使用的栈大小；
+			\item 检测是否有代码长度限制；
+			\item 检测是否能够正常返Runtime Error（assertion、return 1、空指针）；
+			\item 查清楚厕所方位和打印机方位；
+		\end{enumerate}
+		\end{spacing}
+		\section{博弈游戏}
+		\input{source/Hint/Game-Theory.tex}
+		\section{常用数学公式}
+		\input{source/Hint/Mathematical-Lemma.tex}
+		\section{附录}
+		\subsection{NTT素数及原根列表}
+		\input{source/Appendix/NFT-Primes.tex}
+		\includepdf[pages=-]{source/Appendix/cheat.pdf}
+	\end{spacing}
+\end{document}
