@@ -1,30 +1,29 @@
-const int N = 1010;
+const int N = 1000 + 10;
 
 int n, m;
-int lno[N], rno[N];
-vector<int> g[N];
-int vis[N], vclock;
+int match[N], visit[N], stamp;
+vector<int> edge[N];
 
 bool dfs( int u ) {
-	for( int t = 0; t < (int)g[u].size(); t++ ) {
-		int v = g[u][t];
-		if( vis[v] == vclock ) continue;
-		vis[v] = vclock;
-		if( rno[v] == 0 || dfs(rno[v]) ) {
-			lno[u] = v;
-			rno[v] = u;
+	for( int t = 0; t < (int)edge[u].size(); t++ ) {
+		int v = edge[u][t];
+		if( visit[v] == stamp ) continue;
+		visit[v] = stamp;
+		if( match[v] == 0 || dfs(match[v]) ) {
+			match[v] = u;
 			return true;
 		}
 	}
 	return false;
 }
 int hungary() {
-	int match = 0;
-	vclock = 0;
+	int ans = 0;
+	memset( visit, 0, sizeof(visit) );
+	memset( match, 0, sizeof(match) );
+	stamp = 0;
 	for( int u = 1; u <= n; u++ ) {
-		vclock++;
-		match += dfs(u);
+		++stamp;
+		ans += dfs( u );
 	}
-	return match;
+	return ans;
 }
-
