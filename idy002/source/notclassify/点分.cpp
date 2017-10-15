@@ -238,20 +238,3 @@ void modify( int u, int delta ) {
         sumw[p] += delta;
     }
 }
-int main() {
-    scanf( "%d%d", &n, &m );
-    for( int i=1,u,v,w; i<n; i++ ) {
-        scanf( "%d%d%d", &u, &v, &w );
-        adde( u, v, w );
-        adde( v, u, w );
-    }
-    bac[0] = n;
-    int core = build_vdcp(1);
-    build_lca(1);
-    for( int t=1,u,d; t<=m; t++ ) {
-        scanf( "%d%d", &u, &d );
-        modify( u, d );
-        curt = t;
-        printf( "%lld\n", search(core) );
-    }
-}
