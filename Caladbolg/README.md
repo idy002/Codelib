@@ -45,7 +45,7 @@ Caladbolg Standard Code Library
 - [ ] 后缀数组
 - [ ] AC自动机
 
-### 孙司羽
+### 孙司宇
 #### 图论
 - [ ] 最大团搜索
 - [ ] 极大团计数
