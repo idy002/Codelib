@@ -116,3 +116,4 @@ int main() {
     fft(c,1);
     print(n,c);
 }
+
