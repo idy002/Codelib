@@ -1,0 +1,24 @@
+#+TITLE: Standar Code Library of Caladbolg
+#+STARTUP: content
+#+OPTIONS: toc:nil
+* Messages
+Captain, I've added my own code library into the directory [[file:Source-simplified by Lmxyy]]. 
+Please add them to our templates. Many thanks.
+PS: For [[file:Source-simplified%20by%20Lmxyy/Others/Competition.emacs]], you should use the following environment to display it.
+#+BEGIN_SRC latex
+\newcommand{\emacscode}[1]
+{
+  \inputminted[mathescape,
+  tabsize=4,
+  linenos,
+  % frame=single,
+  framesep=2mm,
+  breakaftergroup=true,
+  breakautoindent=true,
+  breakbytoken=true,
+  breaklines=true,
+  fontsize=\small
+  ]{emacs}{Source/#1}
+}
+#+END_SRC
+For the codes I couldn't make it to rewrite, I just copied them from the website, like [[file:Source-simplified%20by%20Lmxyy/Computational%20Geometry/Two-dimension/Minimal%20Circle%20Cover.cpp]], [[file:Source-simplified%20by%20Lmxyy/Computational%20Geometry/Three-dimension/Minimal%20Ball%20Cover.cpp]] and [[file:Source-simplified%20by%20Lmxyy/Computational%20Geometry/Three-dimension/Volume%20of%20Tetrahedron.cpp]]. Some I don't have time to check them, but I think I can correct them impromptuly.
