@@ -80,12 +80,12 @@
     			 tabsize=2,
     			 linenos,
     			 %frame=single,
-    			 framesep=2mm,
+    			 framesep=1mm,
     			 breakaftergroup=true,
     			 breakautoindent=true,
     			 breakbytoken=true,
     			 breaklines=true,
-    			 fontsize=\scriptsize
+    			 fontsize=\tiny
     ]{cpp}{source/#1}
 }
 \newcommand{\javacode}[1]{
@@ -93,7 +93,7 @@
     			 tabsize=2,
     			 linenos,
     			 %frame=single,
-    			 framesep=2mm,
+    			 framesep=1mm,
     			 breakaftergroup=true,
     			 breakautoindent=true,
     			 breakbytoken=true,
@@ -121,68 +121,51 @@
 	\begin{multicols}{2}\small
 	\begin{spacing}{0.72}
 	\tableofcontents
-		\chapter{李沐阳}
-		\section{AC自动机}
-			\cppcode{lmy/AC自动机.cpp}
-		\section{Dinic Algorithm}
-			\cppcode{lmy/Dinic Algorithm.cpp}
-		\section{K-Dimension Tree}
-			\cppcode{lmy/K-Dimension Tree.cpp}
-		\section{KM}
-			\cppcode{lmy/KM.cpp}
-		\section{Link Cut Tree}
-			\cppcode{lmy/Link Cut Tree.cpp}
-		\section{Numerical Integration}
-			\cppcode{lmy/Numerical Integration.cpp}
-		\section{Splay}
-			\cppcode{lmy/Splay.cpp}
-		\section{几何基础}
-			\cppcode{lmy/几何基础.cpp}
-		\section{凸包}
-			\cppcode{lmy/凸包.cpp}
-		\section{无向图最小割}
-		\cppcode{Graph-Algorithm/Minimum-Cut-Stoer-Wagner.cpp}
-		\section{匈牙利}
-			\cppcode{lmy/匈牙利.cpp}
-		\section{半平面交}
-			\cppcode{lmy/半平面交.cpp}
-		\section{后缀数组}
-			\cppcode{lmy/后缀数组.cpp}
-		\section{圆与多边形面积交}
-			\cppcode{lmy/圆与多边形面积交.cpp}
-		\section{圆的K次交}
-			\cppcode{lmy/圆的K次交.cpp}
-		\section{最小覆盖圆}
-		\cppcode{Geometry-Algorithm/Minimum-Coverage-Circle.cpp}
-		\section{三维凸包}
-		\cppcode{Geometry-Algorithm/Convex-Hull-3D.cpp}
-		\section{三维绕轴旋转}
-		\noindent \textbf{注意事项：}以右手拇指为向量方向，逆时针绕轴（剩下四根手指方向）旋转$\theta$角的右乘矩阵。
-		\cppcode{Geometry-Algorithm/Rotate-3D.cpp}
-		\section{平面图}
-			\cppcode{lmy/平面图.cpp}
-		\section{弦图染色最大势}
-			\cppcode{lmy/弦图染色最大势.cpp}
-		\section{强连通分量}
-			\cppcode{lmy/强连通分量.cpp}
-		\section{支配树}
-			\cppcode{lmy/支配树.cpp}
-		\section{点双联通分量}
-			\cppcode{lmy/点双联通分量.cpp}
-		\section{线性规划}
-			\cppcode{lmy/线性规划.cpp}
-		\section{费用流}
-			\cppcode{lmy/费用流.cpp}
-		\section{直线下整点个数}
-		\noindent \textbf{注意事项：}返回结果为：$\displaystyle \sum_{0 \leq i < n} \lfloor \frac{a + b \cdot i}{m} \rfloor$
-		即直线下整点个数。
-		\cppcode{Mathematical-Algorithm/Lattice-Counter.cpp}
-		\section{闪电素数判定}
-		\cppcode{Mathematical-Algorithm/Miller-Rabin.cpp}
-		\section{闪电质因数分解}
-		\cppcode{Mathematical-Algorithm/Pollard-Rho.cpp}
-		\section{⾃适应⾟普森}
-		\cppcode{Mathematical-Algorithm/Self-Adjusting-Simpson.cpp}
+	\chapter{李沐阳}
+\section{Aho-Corasick Automaton} \cppcode{lmyy/Aho-Corasick Automaton.cpp}
+\section{Bridges and Cut Vertices} \cppcode{lmyy/Bridges and Cut Vertices.cpp}
+\section{Circle Intersection} \cppcode{lmyy/Circle Intersection.cpp}
+\section{Counting Integral Points under Straight Line} \cppcode{lmyy/Counting Integral Points under Straight Line.cpp}
+\section{Cross Points of Circles} \cppcode{lmyy/Cross Points of Circles.cpp}
+\section{Cross Points of Line and Circle} \cppcode{lmyy/Cross Points of Line and Circle.cpp}
+\section{Dominator Tree} \cppcode{lmyy/Dominator Tree.cpp}
+\section{Graham Scanning Algorithm} \cppcode{lmyy/Graham Scanning Algorithm.cpp}
+\section{Gray Code} \cppcode{lmyy/Gray Code.cpp}
+\section{Half Plane Intersection} \cppcode{lmyy/Half Plane Intersection.cpp}
+\section{Hungary} \cppcode{lmyy/Hungary.cpp}
+\section{Intersecting Area of Circle and Polygon} \cppcode{lmyy/Intersecting Area of Circle and Polygon.cpp}
+\section{Intersection of Line and Convex Hull} \cppcode{lmyy/Intersection of Line and Convex Hull.cpp}
+\section{Kuhn-Munkres Algorithm} \cppcode{lmyy/Kuhn-Munkres Algorithm.cpp}
+\section{Link Cut Tree} \cppcode{lmyy/Link Cut Tree.cpp}
+\section{Maximal Matching in General Graphs} \cppcode{lmyy/Maximal Matching in General Graphs.cpp}
+\section{Merge Split Treap} \cppcode{lmyy/Merge Split Treap.cpp}
+\section{Modui Algorithm on Tree} \cppcode{lmyy/Modui Algorithm on Tree.cpp}
+\section{Numerical Integration} \cppcode{lmyy/Numerical Integration.cpp}
+\section{Planar Graph} \cppcode{lmyy/Planar Graph.cpp}
+\section{Point Biconnected Component} \cppcode{lmyy/Point Biconnected Component.cpp}
+\section{Pollard Rho Algorithm} \cppcode{lmyy/Pollard Rho Algorithm.cpp}
+\section{Polygon Class} \cppcode{lmyy/Polygon Class.cpp}
+\section{Simplex} \cppcode{lmyy/Simplex.cpp}
+\section{Steiner Tree} \cppcode{lmyy/Steiner Tree.cpp}
+\section{Strongly Connected Component} \cppcode{lmyy/Strongly Connected Component.cpp}
+\section{Suffix Array} \cppcode{lmyy/Suffix Array.cpp}
+\section{Zhu-Liu Algorithm} \cppcode{lmyy/Zhu-Liu Algorithm.cpp}
+\section{Code} \cppcode{lmyy/Code.java}
+\section{Common Formulas 2D} \cppcode{lmyy/Common Formulas 2D.cpp}
+\section{Common Formulas 3D} \cppcode{lmyy/Common Formulas 3D.cpp}
+\section{Convex Hull 2D} \cppcode{lmyy/Convex Hull 2D.cpp}
+\section{Convex Hull 3D} \cppcode{lmyy/Convex Hull 3D.cpp}
+\section{Maximal Weighted  Matching in General Graphs} \cppcode{lmyy/Maximal Weighted  Matching in General Graphs.cpp}
+\section{Minimal Ball Cover} \cppcode{lmyy/Minimal Ball Cover.cpp}
+\section{Minimal Circle Cover} \cppcode{lmyy/Minimal Circle Cover.cpp}
+\section{Stoer Wagner Algorithm} \cppcode{lmyy/Stoer Wagner Algorithm.cpp}
+\section{Virtual Tree} \cppcode{lmyy/Virtual Tree.cpp}
+\section{Graph Isomorphism}
+哈希函数：
+$$F_t(i) = \left(F_{t-1}(i) \times A + \sum_{i \to j}F_{t-1}(j) \times B + \sum_{j \to i}F_{t-1}(j) \times C + D \times (i==a) \right) \bmod P$$
+其中$K,A,B,C,D,P$为自选参数。两个图同构当且仅当$F_K(i)$值一样。
+\section{Competition} \cppcode{lmyy/Competition.emacs}
+
 	\chapter{孙司宇}
 		\section{FFT} \cppcode{ssy/FFT.cpp}
 		\section{NTT} \cppcode{ssy/NTT.cpp}
